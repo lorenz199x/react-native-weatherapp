@@ -3,7 +3,7 @@ import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, ScrollView, Ima
 import axios from 'axios';
 import Auth0 from 'react-native-auth0';
 
-import { AUTH0_DOMAIN, CLIENT_ID } from '../shared/utils/Enums'
+import { AUTH0_DOMAIN, CLIENT_ID, API_ID} from '../shared/utils/Enums'
 import { debounce } from '../shared/utils/Helpers';
 import SearchInput from '../shared/components/SearchInput';
 import WeatherForm from '../shared/components/Weatherform';
@@ -59,7 +59,7 @@ const HomeScreen = (props) => {
   const getWeather = async (query) => {
     try {
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${query},uk&APPID=7dc61b35bf026c5a070976879906957e`,
+        `https://api.openweathermap.org/data/2.5/weather?q=${query},uk&APPID=${API_ID}`,
       );
       return setWeather(response.data)
     } catch (error) {
